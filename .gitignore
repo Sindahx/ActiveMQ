@@ -1,0 +1,3 @@
+/out/artifacts/DemoActiveMq_war_exploded/WEB-INF/lib
+/out/artifacts/DemoActiveMq_war_exploded/WEB-INF/classes/com/tgb/SpringActivemq/mq/consumer/queue/*.class
+*.class
