@@ -28,10 +28,12 @@ public class TopicSender {
      * @param topicName 队列名称
      * @param message   消息内容
      */
-    public void send(String topicName, final String message) {
+    public void send(String topicName, final String message,final String key) {
         jmsTemplate.send(topicName, new MessageCreator() {
             public Message createMessage(Session session) throws JMSException {
-                return session.createTextMessage(message);
+                Message msg = session.createTextMessage(message);
+                msg.setJMSCorrelationID(key);
+                return msg;
             }
         });
     }

@@ -20,7 +20,9 @@ public class TopicReceiver1 implements MessageListener{
 
 	public void onMessage(Message message) {
 		try {
+			System.out.println(message.getJMSCorrelationID());
 			System.out.println("TopicReceiver1接收到消息:"+((TextMessage)message).getText());
+
 		} catch (JMSException e) {
 			e.printStackTrace();
 		}

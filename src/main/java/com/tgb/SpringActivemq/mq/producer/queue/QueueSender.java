@@ -28,10 +28,12 @@ public class QueueSender {
 	 * @param queueName 队列名称
 	 * @param message 消息内容
 	 */
-	public void send(String queueName,final String message){
+	public void send(String queueName,final String message,final String key){
 			jmsTemplate.send(queueName, new MessageCreator() {
 			public Message createMessage(Session session) throws JMSException {
-				return session.createTextMessage(message);
+				Message msg = session.createTextMessage(message);
+				msg.setJMSCorrelationID(key);
+				return msg;
 			}
 		});
 	}
